@@ -1,5 +1,5 @@
 import Image from "next/image"
-
+import Divider from './Divider'
 const Header: React.FC = () => {
   
   return (
@@ -11,14 +11,7 @@ const Header: React.FC = () => {
         height={200} 
         style={{objectFit: "cover", objectPosition: "center"}}
       />
-      <Image 
-        src={'/images/divider.png'} 
-        alt={"divider-image"} 
-        width={4000} 
-        height={200} 
-        style={{objectFit: "cover", objectPosition: "center"}}
-        className="-translate-y-4 md:-translate-y-12"
-      />
+      <Divider translate={true}/>
     </div>
   )
 }

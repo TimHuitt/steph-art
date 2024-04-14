@@ -3,6 +3,8 @@
 @tailwind utilities;
 
 :root {
+  --font-sans: 'Comfortaa', sans-serif;
+  --font-sketch: 'Cabin Sketch', cursive;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -17,5 +19,8 @@
 @layer components {
   .list-item {
     @apply px-4 hover:bg-purple-300 rounded-lg cursor-pointer
+  }
+  .input {
+    @apply w-full md:w-3/5 p-4 rounded-sm outline-yellow-500 bg-rose-100
   }
 }

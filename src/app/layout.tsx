@@ -15,6 +15,13 @@ const comfortaa = Comfortaa({
   weight: "400"
 });
 
+
+const sketch = Cabin_Sketch({
+  subsets: ["latin"],
+  variable: '--font-sans',
+  weight: "400"
+});
+
 export default function RootLayout({
   children,
 }: Readonly<{
