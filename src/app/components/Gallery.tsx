@@ -1,29 +1,10 @@
 'use client'
 
 import Images from "./Images"
-import { useEffect, useState } from "react"
+import { useWindowContext } from '@/app/windowContext'
 
 const Gallery = () => {
-  const [ width, setWidth ] = useState<number>(0)
-  
-  useEffect(() => {
-    const handleResize = () => {
-      setWidth(window.innerWidth)
-    }
-
-    if (typeof window !== 'undefined') {
-      handleResize()
-      window.addEventListener('load', handleResize)
-      window.addEventListener('resize', handleResize)
-    }
-
-    return () => {
-      if (typeof window !== 'undefined') {
-        window.removeEventListener('load', handleResize)
-        window.removeEventListener('resize', handleResize)
-      }
-    }    
-  },[])
+  const { width } = useWindowContext()
 
   const renderImages = () => {
     if (width > 1264) {

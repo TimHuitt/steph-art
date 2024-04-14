@@ -1,5 +1,8 @@
 'use client'
 
+import { useEffect } from 'react'
+import { useWindowContext } from '@/app/windowContext'
+
 import Announcements from "./components/Announcements";
 import Header from "./components/Header";
 import Menu from "./components/Menu";
@@ -18,7 +21,30 @@ const sketch = Cabin_Sketch({
   weight: "400"
 });
 
+
+
 export default function Home() {
+  const { width, setWidth } = useWindowContext()
+  
+  useEffect(() => {
+    const handleResize = () => {
+      setWidth(window.innerWidth)
+    }
+
+    if (typeof window !== 'undefined') {
+      handleResize()
+      window.addEventListener('load', handleResize)
+      window.addEventListener('resize', handleResize)
+    }
+
+    return () => {
+      if (typeof window !== 'undefined') {
+        window.removeEventListener('load', handleResize)
+        window.removeEventListener('resize', handleResize)
+      }
+    }    
+  },[])
+
   return (
     <>
       <main className="relative flex min-h-screen pb-40 w-full flex-col items-center">
@@ -35,12 +61,6 @@ export default function Home() {
         <Divider />
         <Custom />
       </main>
-      <style jsx global>{`
-        :root {
-          --comfortaa: ${sketch.style.fontFamily}
-          --sketch: ${sketch.style.fontFamily}
-        }
-      `}</style>
     </> 
   );
 }

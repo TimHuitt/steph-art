@@ -10,7 +10,7 @@ const sketch = Cabin_Sketch({
 const Custom: React.FC = () => {
   return (
     <>
-      <h1 className={`${sketch.className} text-[6rem] font-thin mt-10 text-purple-950`}>Custom</h1>
+      <h1 className={`${sketch.className} font-thin mt-10 text-purple-950`}>Custom</h1>
       <div className="flex flex-col items-center justify-center w-[90%] md:w-5/6 lg:w-4/6 pt-20 bg-orange-300 rounded-xl overflow-y-auto">
         <p className="text-2xl p-6 w-3/4">If you would like to request custom work, or have any other question, please send me a message below! I&apos;ll be in contact as soon as possible!</p>
         <div className="relative flex justify-center items-start h-[300px] gap-6 w-full my-6 px-6 overflow-hidden">
@@ -52,8 +52,8 @@ const Custom: React.FC = () => {
             <label className="label" htmlFor="message">Message</label>
             <textarea className="input text-area" name="message"></textarea>
             <div className="w-full p-4 my-4">
-              <button type="submit" className="form-button submit">Submit</button>
-              <button className="form-button cancel">Clear</button>
+              <button type="button" className="form-button submit">Submit</button>
+              <button type="button" className="form-button cancel">Clear</button>
             </div>
           </form>
         </div>

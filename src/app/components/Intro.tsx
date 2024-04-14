@@ -9,7 +9,7 @@ const Intro: React.FC = () => {
   return (
     <>
       <div className={`h-auto w-[full] flex justify-center items-center`}>
-        <h1 className={`${sketch.className} text-[4rem] md:text-[8rem] text-purple-950`}>Hi! I&apos;m Steph!</h1>
+        <h2 className={`${sketch.className} text-[2rem] sm:text-[4rem] md:text-[8rem] -translate-y-[200%] md:translate-y-0 text-purple-950`}>Hi! I&apos;m Steph!</h2>
       </div>
     </>
   )

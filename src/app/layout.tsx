@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { Comfortaa } from "next/font/google";
+import { WindowProvider } from '@/app/windowContext'
 
 const comfortaa = Comfortaa({
   subsets: ["latin"],
@@ -20,10 +21,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={`${comfortaa.className} bg-purple-100 overflow-auto`}>
-        {children}
-      </body>
-    </html>
+    <WindowProvider>
+      <html lang="en">
+        <body className={`${comfortaa.className} bg-purple-100 overflow-auto`}>
+          {children}
+        </body>
+      </html>
+    </WindowProvider>
   );
 }

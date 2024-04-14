@@ -10,12 +10,12 @@ const sketch = Cabin_Sketch({
 const Shop: React.FC = () => {
   return (
     <>
-      <h1 className={`${sketch.className} text-[6rem] font-thin mt-10 text-purple-950`}>Shop</h1>
-      <div className="flex justify-between items-center">
+      <h1 className={`${sketch.className} font-thin mt-10 text-purple-950`}>Shop</h1>
+      <div className={`flex justify-between items-center`}>
         <p className="w-full text-xl p-6 pe-0 w-3/4">
           Browse my collection of paintings, prints, sculpts, and more at &nbsp;
         </p>
-        <div className="relative max-h-20 max-w-50 border-b-4 border-orange-500 hover:bg-orange-500 hover:bg-opacity-20 rounded-xl overflow-hidden cursor-pointer">
+        <div className="relative max-h-20 max-w-50 px-2 border-b-4 border-orange-500 hover:bg-orange-500 hover:bg-opacity-20 rounded-xl overflow-hidden cursor-pointer">
           <Image 
             src={"/images/icons/etsy.svg"}
             alt={""}

@@ -1,40 +1,31 @@
 import Image from "next/image";
-import { useState, useEffect } from 'react'
+import { useWindowContext } from '@/app/windowContext'
 
 const Menu: React.FC = () => {
-  const [ width, setWidth ] = useState<number>(0)
-  
-  useEffect(() => {
-    const handleResize = () => {
-      setWidth(window.innerWidth)
-    }
+  const { width } = useWindowContext()
 
-    if (typeof window !== 'undefined') {
-      handleResize()
-      window.addEventListener('load', handleResize)
-      window.addEventListener('resize', handleResize)
-    }
-
-    return () => {
-      if (typeof window !== 'undefined') {
-        window.removeEventListener('load', handleResize)
-        window.removeEventListener('resize', handleResize)
-      }
-    }    
-  },[])
+  const handleNavigate = (e: React.MouseEvent<HTMLLIElement, MouseEvent>) => {
+    
+    return
+  }
 
   return (
     <>
-      <div className="sticky top-0 h-14 flex justify-center items-center text-xl z-50">
-        <ul className="flex w-auto text-green-700 bg-purple-100 py-2 bg-opacity-85 rounded-3xl">
-          <li className="list-item selected">Home</li>
-          <li className="list-item">About</li>
-          <li className="list-item">Portfolio</li>
-          <li className="list-item">Shop</li>
-          <li className="list-item">Custom</li>
-        </ul>
-      </div>
-      <div className="sticky top-0 w-full h-14 flex -mt-14 mr-8 justify-end items-center text-xl overflow-hidden z-40">
+        { width > 950 ? (
+          <div className="sticky top-0 h-14 max-w-screen flex justify-center items-center text-xl z-50">
+            <ul className="flex w-auto text-green-700 bg-purple-100 py-2 bg-opacity-85 rounded-3xl">
+              <li className="list-item selected" id="home" onClick={handleNavigate}>Home</li>
+              <li className="list-item" id="about" onClick={handleNavigate}>About</li>
+              <li className="list-item" id="portfolio" onClick={handleNavigate}>Portfolio</li>
+              <li className="list-item" id="shop" onClick={handleNavigate}>Shop</li>
+              <li className="list-item" id="custom" onClick={handleNavigate}>Custom</li>
+            </ul>
+          </div>
+        ) : (
+          ''
+        )}
+
+      <div className="sticky top-0 w-full h-14 flex mr-0 md:mr-8 justify-end items-center text-xl overflow-hidden z-40">
         <div className="flex w-auto h-[40px] justify-center items-center gap-2 px-2 py-0 mx-4 text-green-700 bg-purple-100 py-2 bg-opacity-75 rounded-3xl">
           <a href="#" className="relative flex justify-center items-center w-[40px] h-[40px] cursor-pointer">
             <div className="relative w-[30px] h-[30px] hover:w-[40px] h-[40px]">
