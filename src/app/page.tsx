@@ -2,6 +2,7 @@
 
 import { useEffect } from 'react'
 import { useWindowContext } from '@/app/windowContext'
+import debounce from 'lodash/debounce'
 
 import Announcements from "./components/Announcements";
 import Header from "./components/Header";
@@ -13,23 +14,15 @@ import Shop from "./components/Shop";
 import Custom from "./components/Custom";
 import About from "./components/About";
 import Gallery from "./components/Gallery";
-import { Cabin_Sketch } from "next/font/google";
-
-const sketch = Cabin_Sketch({
-  subsets: ["latin"],
-  variable: '--font-sans',
-  weight: "400"
-});
-
 
 
 export default function Home() {
-  const { width, setWidth } = useWindowContext()
+  const { setWidth } = useWindowContext()
   
   useEffect(() => {
-    const handleResize = () => {
+    const handleResize = debounce(() => {
       setWidth(window.innerWidth)
-    }
+    }, 100)
 
     if (typeof window !== 'undefined') {
       handleResize()
@@ -41,9 +34,10 @@ export default function Home() {
       if (typeof window !== 'undefined') {
         window.removeEventListener('load', handleResize)
         window.removeEventListener('resize', handleResize)
+        handleResize.cancel()
       }
     }    
-  },[])
+  },[setWidth])
 
   return (
     <>
