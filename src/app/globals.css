@@ -8,11 +8,14 @@
 @media (prefers-color-scheme: dark) {
 }
 
-body {
-}
-
 @layer utilities {
   .text-balance {
     text-wrap: balance;
+  }
+}
+
+@layer components {
+  .list-item {
+    @apply px-4 hover:bg-purple-300 rounded-lg cursor-pointer
   }
 }

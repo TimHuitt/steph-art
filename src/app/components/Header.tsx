@@ -17,7 +17,7 @@ const Header: React.FC = () => {
         width={4000} 
         height={200} 
         style={{objectFit: "cover", objectPosition: "center"}}
-        className="-translate-y-12"
+        className="-translate-y-4 md:-translate-y-12"
       />
     </div>
   )

@@ -2,6 +2,8 @@ import Image from "next/image";
 import Announcements from "./components/Announcements";
 import Header from "./components/Header";
 import Menu from "./components/Menu";
+import Body from "./components/Body";
+import Images from "./components/Images";
 
 export default function Home() {
   return (
@@ -9,6 +11,7 @@ export default function Home() {
       <Announcements />      
       <Menu />
       <Header />
+      <Body />
     </main>
   );
 }
