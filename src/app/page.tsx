@@ -21,7 +21,7 @@ const sketch = Cabin_Sketch({
 export default function Home() {
   return (
     <>
-      <main className="relative flex min-h-[5000px] pb-40 w-full flex-col items-center">
+      <main className="relative flex min-h-screen pb-40 w-full flex-col items-center">
         <Announcements />      
         <Menu />
         <Header />

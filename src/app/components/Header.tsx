@@ -9,7 +9,7 @@ const Header: React.FC = () => {
         alt={"header-background"} 
         width={4000} 
         height={200} 
-        style={{objectFit: "cover", objectPosition: "center"}}
+        style={{objectFit: "cover"}}
       />
       <Divider translate={true}/>
     </div>

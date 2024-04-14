@@ -4,7 +4,7 @@ const Menu: React.FC = () => {
   return (
     <>
       <div className="sticky top-0 h-14 flex justify-center items-center text-xl z-50">
-        <ul className="flex w-auto text-green-700 bg-purple-100 py-2 bg-opacity-75 rounded-3xl">
+        <ul className="flex w-auto text-green-700 bg-purple-100 py-2 bg-opacity-85 rounded-3xl">
           <li className="list-item selected">Home</li>
           <li className="list-item">About</li>
           <li className="list-item">Portfolio</li>

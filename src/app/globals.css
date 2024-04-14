@@ -22,7 +22,7 @@
     @apply py-4 mt-4
   }
   .input {
-    @apply w-full md:w-3/5 p-4 rounded-xl outline-yellow-500 bg-rose-100
+    @apply w-[90%] md:w-3/5 p-4 rounded-xl outline-yellow-500 bg-rose-100
   }
   .text-area {
     @apply h-40 resize-none
