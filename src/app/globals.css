@@ -2,11 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --font-sans: 'Comfortaa', sans-serif;
-  --font-sketch: 'Cabin Sketch', cursive;
-}
-
 @media (prefers-color-scheme: dark) {
 }
 
@@ -18,9 +13,27 @@
 
 @layer components {
   .list-item {
-    @apply px-4 hover:bg-purple-300 rounded-lg cursor-pointer
+    @apply px-4 mx-2 hover:bg-purple-300 rounded-lg cursor-pointer hover:shadow-lg
+  }
+  .selected {
+    @apply bg-purple-300 shadow-lg
+  }
+  .label {
+    @apply py-4 mt-4
   }
   .input {
-    @apply w-full md:w-3/5 p-4 rounded-sm outline-yellow-500 bg-rose-100
+    @apply w-full md:w-3/5 p-4 rounded-xl outline-yellow-500 bg-rose-100
+  }
+  .text-area {
+    @apply h-40 resize-none
+  }
+  .form-button {
+    @apply mx-2 md:mx-10 p-4 rounded-xl bg-gray-900 hover:bg-opacity-100 border border-slate-600
+  }
+  .submit {
+    @apply bg-green-600 bg-opacity-30 active:bg-gray-500
+  }
+  .cancel {
+    @apply bg-red-600 bg-opacity-30 active:bg-gray-500
   }
 }

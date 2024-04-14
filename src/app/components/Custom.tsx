@@ -8,12 +8,11 @@ const sketch = Cabin_Sketch({
 });
 
 const Custom: React.FC = () => {
-  
   return (
     <>
       <h1 className={`${sketch.className} text-[6rem] font-thin mt-10 text-purple-950`}>Custom</h1>
       <div className="flex flex-col items-center justify-center w-[90%] md:w-5/6 lg:w-4/6 pt-20 bg-orange-300 rounded-xl overflow-y-auto">
-        <p className="text-2xl p-6 w-3/4">My name is Steph Huitt and also known as aDoodlingOctopus on social media, I am an illustrator painter that specializes in whimsical colorful designs that bring smiles to faces of all ages! I love to create a sense of joy through the worlds I create and what I bring to life! </p>
+        <p className="text-2xl p-6 w-3/4">If you would like to request custom work, or have any other question, please send me a message below! I&apos;ll be in contact as soon as possible!</p>
         <div className="relative flex justify-center items-start h-[300px] gap-6 w-full my-6 px-6 overflow-hidden">
           <div className="relative w-1/4 h-full rounded-xl overflow-hidden">
             <Image 
@@ -40,7 +39,7 @@ const Custom: React.FC = () => {
             />
           </div>
         </div>
-        <div className="w-full flex justify-center">
+        <div className="w-full flex justify-center pt-20">
           <form className="w-full flex flex-col items-center text-center">
             <label className="label" htmlFor="name">Name</label>
             <input 
@@ -52,10 +51,9 @@ const Custom: React.FC = () => {
             <input type="email" className="input" name="email" />
             <label className="label" htmlFor="message">Message</label>
             <textarea className="input text-area" name="message"></textarea>
-            
             <div className="w-full p-4 my-4">
-              <button type="submit" className="form-button">Submit</button>
-              <button className="form-button">Clear</button>
+              <button type="submit" className="form-button submit">Submit</button>
+              <button className="form-button cancel">Clear</button>
             </div>
           </form>
         </div>

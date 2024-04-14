@@ -8,7 +8,6 @@ const sketch = Cabin_Sketch({
 });
 
 const Shop: React.FC = () => {
-  
   return (
     <>
       <h1 className={`${sketch.className} text-[6rem] font-thin mt-10 text-purple-950`}>Shop</h1>

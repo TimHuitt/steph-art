@@ -1,7 +1,6 @@
 import Image from "next/image"
 
-const Divider: React.FC<{translate: boolean}> = ({ translate }) => {
-  
+const Divider: React.FC<{translate?: boolean}> = ({ translate }) => {
   return (
     <Image 
       src={'/images/divider.png'} 
