@@ -1,6 +1,28 @@
 import Image from "next/image";
+import { useState, useEffect } from 'react'
 
 const Menu: React.FC = () => {
+  const [ width, setWidth ] = useState<number>(0)
+  
+  useEffect(() => {
+    const handleResize = () => {
+      setWidth(window.innerWidth)
+    }
+
+    if (typeof window !== 'undefined') {
+      handleResize()
+      window.addEventListener('load', handleResize)
+      window.addEventListener('resize', handleResize)
+    }
+
+    return () => {
+      if (typeof window !== 'undefined') {
+        window.removeEventListener('load', handleResize)
+        window.removeEventListener('resize', handleResize)
+      }
+    }    
+  },[])
+
   return (
     <>
       <div className="sticky top-0 h-14 flex justify-center items-center text-xl z-50">
