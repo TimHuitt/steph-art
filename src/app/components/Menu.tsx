@@ -3,16 +3,26 @@ import { useState } from "react";
 import { useWindowContext } from '@/app/windowContext'
 
 const Menu: React.FC = () => {
-  const { width } = useWindowContext()
+  const { width, mainRef, aboutRef, portfolioRef, shopRef, customRef } = useWindowContext()
   const [ showDropdown, setShowDropdown ] = useState<boolean>(false)
 
-  const handleNavigate = (e: React.MouseEvent<HTMLLIElement, MouseEvent>) => {
-    const target = e.target as HTMLElement
-
-  }
 
   const handleMenu = () => {
     setShowDropdown(prev => !prev)
+  }
+
+
+  const scrollToLoc = (ref?: React.RefObject<HTMLDivElement>) => {
+    
+
+    if (mainRef && ref && mainRef.current && ref.current) {
+      const top = ref.current.offsetTop - 50
+      mainRef.current.scrollTo({top,behavior: "smooth"})
+    } else if (mainRef && mainRef.current) {
+      mainRef.current.scrollTo({top: 0, behavior: "smooth"})
+    }
+
+    setShowDropdown(false)
   }
 
   return (
@@ -24,11 +34,11 @@ const Menu: React.FC = () => {
             <div className="flex-grow"></div>
             <div className="flex-grow-0">
               <ul className="flex justify-center translate-x-[70px] text-green-700 bg-purple-100 py-2 bg-opacity-85 rounded-3xl">
-                <li className="list-item selected" id="home" onClick={handleNavigate}>Home</li>
-                <li className="list-item" id="about" onClick={handleNavigate}>About</li>
-                <li className="list-item" id="portfolio" onClick={handleNavigate}>Portfolio</li>
-                <li className="list-item" id="shop" onClick={handleNavigate}>Shop</li>
-                <li className="list-item" id="custom" onClick={handleNavigate}>Custom</li>
+                <li onClick={() => scrollToLoc()} className="list-item selected">Home</li>
+                <li onClick={() => scrollToLoc(aboutRef)} className="list-item">About</li>
+                <li onClick={() => scrollToLoc(portfolioRef)} className="list-item">Portfolio</li>
+                <li onClick={() => scrollToLoc(shopRef)} className="list-item">Shop</li>
+                <li onClick={() => scrollToLoc(customRef)} className="list-item">Custom</li>
               </ul>
             </div>
           </>
@@ -45,16 +55,13 @@ const Menu: React.FC = () => {
             </div>
             { showDropdown &&
               <div>
-                <ul className="flex flex-col items-center text-green-700 bg-purple-100 py-2 m-2 bg-opacity-85 border-2 border-purple-600 rounded-3xl">
-                  <li className="dropdown-item selected" id="home" onClick={handleNavigate}>Home</li>
-                  <li className="dropdown-item" id="about" onClick={handleNavigate}>About</li>
-                  <li className="dropdown-item" id="portfolio" onClick={handleNavigate}>Portfolio</li>
-                  <li className="dropdown-item" id="shop" onClick={handleNavigate}>Shop</li>
-                  <li className="dropdown-item" id="custom" onClick={handleNavigate}>Custom</li>
+                <ul className="flex flex-col items-center text-green-700 bg-purple-100 py-2 m-2 ml-0 bg-opacity-95 border-2 border-l-0 border-purple-600 rounded-3xl rounded-l-none">
+                  <li onClick={() => scrollToLoc()} className="dropdown-item selected">Home</li>
+                  <li onClick={() => scrollToLoc(aboutRef)} className="dropdown-item">About</li>
+                  <li onClick={() => scrollToLoc(portfolioRef)} className="dropdown-item">Portfolio</li>
+                  <li onClick={() => scrollToLoc(shopRef)} className="dropdown-item">Shop</li>
+                  <li onClick={() => scrollToLoc(customRef)} className="dropdown-item">Custom</li>
                 </ul>
-                <div className="fixed top-0 left-0 min-w-screen min-h-screen bg-purple-950 z-50">
-
-                </div>
               </div>
             }
         </div>

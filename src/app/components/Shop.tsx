@@ -1,5 +1,6 @@
 import Image from "next/image"
 import { Cabin_Sketch } from "next/font/google";
+import { useWindowContext } from "../windowContext";
 
 const sketch = Cabin_Sketch({
   subsets: ["latin"],
@@ -8,9 +9,10 @@ const sketch = Cabin_Sketch({
 });
 
 const Shop: React.FC = () => {
+  const { shopRef } = useWindowContext()
   return (
     <>
-      <h1 className={`${sketch.className} font-thin mt-10 text-purple-950`}>Shop</h1>
+      <h1 ref={shopRef} className={`${sketch.className} font-thin mt-20 text-purple-950`}>Shop</h1>
       <div className={`flex justify-between items-center`}>
         <p className="w-full text-xl p-6 pe-0 w-3/4">
           Browse my collection of paintings, prints, sculpts, and more at &nbsp;

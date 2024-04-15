@@ -2,14 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-@media (prefers-color-scheme: dark) {
-}
-
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
-}
 
 @layer components {
   h1 {
@@ -19,7 +11,7 @@
     @apply px-4 mx-2 hover:bg-purple-300 rounded-lg cursor-pointer hover:shadow-lg
   }
   .dropdown-item {
-    @apply px-4 m-2 hover:bg-purple-300 rounded-lg cursor-pointer hover:shadow-lg
+    @apply px-4 py-2 m-2 hover:bg-purple-300 rounded-lg cursor-pointer hover:shadow-lg
   }
   .selected {
     @apply bg-purple-300 shadow-lg

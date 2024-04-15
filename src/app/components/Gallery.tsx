@@ -54,7 +54,7 @@ const Gallery = () => {
   }
 
   return (
-    <div className={`flex ${width < 550 && 'flex-col'} items-center justify-center mt-20 z-30`}>
+    <div className={`flex ${width < 550 && 'flex-col'} items-center justify-center mt-10 md:mt-40 z-30`}>
       {renderImages()}
     </div>
   )
