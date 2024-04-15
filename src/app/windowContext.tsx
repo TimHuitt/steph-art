@@ -1,6 +1,6 @@
 'use client'
  
-import { createContext, useContext, useState, useRef, useMemo, Dispatch, SetStateAction } from 'react'
+import { createContext, useContext, useState, useRef, useMemo, Dispatch, SetStateAction, useEffect } from 'react'
 
 interface windowContextType {
   width: number
@@ -28,6 +28,10 @@ export const WindowProvider = ({
   const portfolioRef = useRef<HTMLDivElement>(null)
   const shopRef = useRef<HTMLDivElement>(null)
   const customRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    console.log(width)
+  }, [width])
 
   const value = useMemo(() => ({
     width,

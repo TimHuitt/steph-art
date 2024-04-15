@@ -1,8 +1,7 @@
 'use client'
 
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { useWindowContext } from '@/app/windowContext'
-import debounce from 'lodash/debounce'
 
 import Announcements from "./components/Announcements";
 import Header from "./components/Header";
@@ -18,11 +17,14 @@ import Gallery from "./components/Gallery";
 
 export default function Home() {
   const { setWidth } = useWindowContext()
+  const [ loaded, setLoaded ] = useState<boolean>(false)
   
   useEffect(() => {
-    const handleResize = debounce(() => {
+
+    setLoaded(true) 
+    const handleResize = () => {
       setWidth(window.innerWidth)
-    }, 100)
+    }
 
     if (typeof window !== 'undefined') {
       handleResize()
@@ -34,16 +36,16 @@ export default function Home() {
       if (typeof window !== 'undefined') {
         window.removeEventListener('load', handleResize)
         window.removeEventListener('resize', handleResize)
-        handleResize.cancel()
       }
-    }    
+    }  
+
   },[setWidth])
 
   return (
     <>
-      <main className="relative flex min-h-screen pb-40 w-full flex-col items-center">
+      <main className="relative flex min-h-screen pb-40 w-full max-w-screen flex-col items-center">
         <Announcements />      
-        <Menu />
+        {loaded ? <Menu /> : <div className="h-8"></div>}
         <Header />
         <Intro />
         <Gallery />

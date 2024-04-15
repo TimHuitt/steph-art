@@ -23,7 +23,7 @@ export default function RootLayout({
   return (
     <WindowProvider>
       <html lang="en">
-        <body className={`${comfortaa.className} bg-purple-100 overflow-auto`}>
+        <body className={`${comfortaa.className} bg-purple-100`}>
           {children}
         </body>
       </html>

@@ -18,6 +18,9 @@
   .list-item {
     @apply px-4 mx-2 hover:bg-purple-300 rounded-lg cursor-pointer hover:shadow-lg
   }
+  .dropdown-item {
+    @apply px-4 m-2 hover:bg-purple-300 rounded-lg cursor-pointer hover:shadow-lg
+  }
   .selected {
     @apply bg-purple-300 shadow-lg
   }
