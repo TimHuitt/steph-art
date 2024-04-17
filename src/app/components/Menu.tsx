@@ -14,6 +14,27 @@ const Menu: React.FC = () => {
     }
   })
 
+  useEffect(() => {
+    const handleClose = (e: MouseEvent | TouchEvent) => {
+      const dropdown = document.getElementById('dropdown-menu')
+
+      const target = e.target as HTMLElement
+      if (dropdown && !dropdown.contains(target)) {
+        setShowDropdown(prev => !prev)
+      }
+    }
+
+    if (showDropdown) {
+      document.addEventListener('mousedown', handleClose)
+      document.addEventListener('touchstart', handleClose)
+    }
+
+    return () => {
+      document.removeEventListener('mousedown', handleClose)
+      document.removeEventListener('touchstart', handleClose)
+    }
+  }, [showDropdown])
+
   const handleMenu = () => {
     setShowDropdown(prev => !prev)
   }
@@ -52,7 +73,7 @@ const Menu: React.FC = () => {
     } else if (mainRef && mainRef.current) {
       mainRef.current.scrollTo({top: 0, behavior: "smooth"})
     }
-    setShowDropdown(false)
+    handleMenu()
   }
 
   return (
@@ -73,7 +94,7 @@ const Menu: React.FC = () => {
             </div>
           </>
         ) : (
-          <div className="flex flex-col items-start justify-center">
+          <div id="dropdown-menu" className="flex flex-col items-start justify-center">
             <div className="h-[40px] px-2 cursor-pointer" onClick={handleMenu}>
               <Image
                 src={"/images/menu.png"}
@@ -84,7 +105,7 @@ const Menu: React.FC = () => {
               />
             </div>
             { showDropdown &&
-              <div>
+              <div className="z-50">
                 <ul className="flex flex-col items-center text-green-700 bg-purple-100 py-2 m-2 ml-0 bg-opacity-95 border-2 border-l-0 border-purple-600 rounded-3xl rounded-l-none">
                   <li onClick={() => scrollToLoc()} className={`${selected === 'home' ? 'selected' : ''} dropdown-item`}>Home</li>
                   <li onClick={() => scrollToLoc(aboutRef)} className={`${selected === 'about' ? 'selected' : ''} dropdown-item`}>About</li>
@@ -94,7 +115,7 @@ const Menu: React.FC = () => {
                 </ul>
               </div>
             }
-        </div>
+          </div>
         )}
         <div className="flex-grow"></div>
         <div className="flex-grow-0 flex h-[40px] gap-2 mr-6 text-green-700 bg-purple-100 bg-opacity-75 rounded-3xl">
