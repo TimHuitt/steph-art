@@ -1,10 +1,11 @@
 import Image from "next/image";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useWindowContext } from '@/app/windowContext'
 
 const Menu: React.FC = () => {
   const { width, mainRef, aboutRef, portfolioRef, shopRef, customRef, selected, setSelected } = useWindowContext()
   const [ showDropdown, setShowDropdown ] = useState<boolean>(false)
+  const menuRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
     mainRef.current?.addEventListener('scroll', handleScroll);
@@ -36,6 +37,11 @@ const Menu: React.FC = () => {
   }, [showDropdown])
 
   const handleMenu = () => {
+    if (menuRef && menuRef.current && !showDropdown) {
+      menuRef.current.style.transform = "translateX(0)"
+    } else {
+      menuRef.current.style.transform = "translateX(-10rem)"
+    }
     setShowDropdown(prev => !prev)
   }
 
@@ -104,17 +110,15 @@ const Menu: React.FC = () => {
                 style={{objectFit:"contain"}}
               />
             </div>
-            { showDropdown &&
-              <div className="z-50">
-                <ul className="flex flex-col items-center text-green-700 bg-purple-100 py-2 m-2 ml-0 bg-opacity-95 border-2 border-l-0 border-purple-600 rounded-3xl rounded-l-none">
-                  <li onClick={() => scrollToLoc()} className={`${selected === 'home' ? 'selected' : ''} dropdown-item`}>Home</li>
-                  <li onClick={() => scrollToLoc(aboutRef)} className={`${selected === 'about' ? 'selected' : ''} dropdown-item`}>About</li>
-                  <li onClick={() => scrollToLoc(portfolioRef)} className={`${selected === 'portfolio' ? 'selected' : ''} dropdown-item`}>Portfolio</li>
-                  <li onClick={() => scrollToLoc(shopRef)} className={`${selected === 'shop' ? 'selected' : ''} dropdown-item`}>Shop</li>
-                  <li onClick={() => scrollToLoc(customRef)} className={`${selected === 'custom' ? 'selected' : ''} dropdown-item`}>Custom</li>
-                </ul>
-              </div>
-            }
+            <div ref={menuRef} className={`translate-x-[-10rem] transition-all z-50`}>
+              <ul className="flex flex-col items-center text-green-700 bg-purple-100 py-2 m-2 ml-0 bg-opacity-95 border-2 border-l-0 border-purple-600 rounded-3xl rounded-l-none">
+                <li onClick={() => scrollToLoc()} className={`${selected === 'home' ? 'selected' : ''} dropdown-item`}>Home</li>
+                <li onClick={() => scrollToLoc(aboutRef)} className={`${selected === 'about' ? 'selected' : ''} dropdown-item`}>About</li>
+                <li onClick={() => scrollToLoc(portfolioRef)} className={`${selected === 'portfolio' ? 'selected' : ''} dropdown-item`}>Portfolio</li>
+                <li onClick={() => scrollToLoc(shopRef)} className={`${selected === 'shop' ? 'selected' : ''} dropdown-item`}>Shop</li>
+                <li onClick={() => scrollToLoc(customRef)} className={`${selected === 'custom' ? 'selected' : ''} dropdown-item`}>Custom</li>
+              </ul>
+            </div>
           </div>
         )}
         <div className="flex-grow"></div>
