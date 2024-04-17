@@ -1,27 +1,57 @@
 import Image from "next/image";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useWindowContext } from '@/app/windowContext'
 
 const Menu: React.FC = () => {
-  const { width, mainRef, aboutRef, portfolioRef, shopRef, customRef } = useWindowContext()
+  const { width, mainRef, aboutRef, portfolioRef, shopRef, customRef, selected, setSelected } = useWindowContext()
   const [ showDropdown, setShowDropdown ] = useState<boolean>(false)
 
+  useEffect(() => {
+    mainRef.current?.addEventListener('scroll', handleScroll);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll)
+    }
+  })
 
   const handleMenu = () => {
     setShowDropdown(prev => !prev)
   }
 
+  const handleScroll = () => {
+    if (!mainRef.current) return
+
+    const offsets = {
+      home: 0,
+      about: aboutRef.current?.offsetTop ? aboutRef.current?.offsetTop - 50 : 0,
+      portfolio: portfolioRef.current?.offsetTop ? portfolioRef.current?.offsetTop - 50 : 0,
+      shop: shopRef.current?.offsetTop ? shopRef.current?.offsetTop - 50 : 0,
+      custom: customRef.current?.offsetTop ? customRef.current?.offsetTop - 50 : 0,
+      clientHeight: mainRef.current?.clientHeight || 0,
+      scrollHeight: mainRef.current?.scrollHeight || 0,
+      currentScroll: mainRef.current?.scrollTop || 0,
+    }
+
+    if (offsets.currentScroll >= offsets.home && offsets.currentScroll < offsets.about) {
+      setSelected('home')
+    } else if (offsets.currentScroll < offsets.portfolio) {
+      setSelected('about')
+    } else if (offsets.currentScroll >= offsets.portfolio && offsets.currentScroll < offsets.shop) {
+      setSelected('portfolio')
+    } else if (offsets.currentScroll >= offsets.shop && offsets.currentScroll < offsets.custom) {
+      setSelected('shop')
+    } else if (offsets.currentScroll + offsets.clientHeight >= offsets.scrollHeight || offsets.currentScroll >= offsets.custom) {
+      setSelected('custom')
+    }
+  }
 
   const scrollToLoc = (ref?: React.RefObject<HTMLDivElement>) => {
-    
-
     if (mainRef && ref && mainRef.current && ref.current) {
       const top = ref.current.offsetTop - 50
       mainRef.current.scrollTo({top,behavior: "smooth"})
     } else if (mainRef && mainRef.current) {
       mainRef.current.scrollTo({top: 0, behavior: "smooth"})
     }
-
     setShowDropdown(false)
   }
 
@@ -34,11 +64,11 @@ const Menu: React.FC = () => {
             <div className="flex-grow"></div>
             <div className="flex-grow-0">
               <ul className="flex justify-center translate-x-[70px] text-green-700 bg-purple-100 py-2 bg-opacity-85 rounded-3xl">
-                <li onClick={() => scrollToLoc()} className="list-item selected">Home</li>
-                <li onClick={() => scrollToLoc(aboutRef)} className="list-item">About</li>
-                <li onClick={() => scrollToLoc(portfolioRef)} className="list-item">Portfolio</li>
-                <li onClick={() => scrollToLoc(shopRef)} className="list-item">Shop</li>
-                <li onClick={() => scrollToLoc(customRef)} className="list-item">Custom</li>
+                <li onClick={() => scrollToLoc()} className={`list-item ${selected === 'home' ? 'selected' : ''}`}>Home</li>
+                <li onClick={() => scrollToLoc(aboutRef)} className={`${selected === 'about' ? 'selected' : ''} list-item`}>About</li>
+                <li onClick={() => scrollToLoc(portfolioRef)} className={`${selected === 'portfolio' ? 'selected' : ''} list-item`}>Portfolio</li>
+                <li onClick={() => scrollToLoc(shopRef)} className={`${selected === 'shop' ? 'selected' : ''} list-item`}>Shop</li>
+                <li onClick={() => scrollToLoc(customRef)} className={`${selected === 'custom' ? 'selected' : ''} list-item`}>Custom</li>
               </ul>
             </div>
           </>
@@ -56,11 +86,11 @@ const Menu: React.FC = () => {
             { showDropdown &&
               <div>
                 <ul className="flex flex-col items-center text-green-700 bg-purple-100 py-2 m-2 ml-0 bg-opacity-95 border-2 border-l-0 border-purple-600 rounded-3xl rounded-l-none">
-                  <li onClick={() => scrollToLoc()} className="dropdown-item selected">Home</li>
-                  <li onClick={() => scrollToLoc(aboutRef)} className="dropdown-item">About</li>
-                  <li onClick={() => scrollToLoc(portfolioRef)} className="dropdown-item">Portfolio</li>
-                  <li onClick={() => scrollToLoc(shopRef)} className="dropdown-item">Shop</li>
-                  <li onClick={() => scrollToLoc(customRef)} className="dropdown-item">Custom</li>
+                  <li onClick={() => scrollToLoc()} className={`${selected === 'home' ? 'selected' : ''} dropdown-item`}>Home</li>
+                  <li onClick={() => scrollToLoc(aboutRef)} className={`${selected === 'about' ? 'selected' : ''} dropdown-item`}>About</li>
+                  <li onClick={() => scrollToLoc(portfolioRef)} className={`${selected === 'portfolio' ? 'selected' : ''} dropdown-item`}>Portfolio</li>
+                  <li onClick={() => scrollToLoc(shopRef)} className={`${selected === 'shop' ? 'selected' : ''} dropdown-item`}>Shop</li>
+                  <li onClick={() => scrollToLoc(customRef)} className={`${selected === 'custom' ? 'selected' : ''} dropdown-item`}>Custom</li>
                 </ul>
               </div>
             }
