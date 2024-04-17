@@ -10,9 +10,9 @@ const Announcements: React.FC<{width: number}> = ({ width }) => {
           LIVE PAINTING: Come see my live painting night at the OZO Latte Art Throwdown! Click here for details!
         </p>
       </div>
-      <div className='fixed top-0 left-0 h-screen w-screen min-w-screen min-h-screen bg-purple-950 z-40'>
+      {/* <div className='fixed top-0 left-0 h-screen w-screen min-w-screen min-h-screen bg-purple-950 z-40'>
         
-      </div>
+      </div> */}
     </>
   )
 }
