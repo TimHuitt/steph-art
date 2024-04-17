@@ -21,6 +21,11 @@ const Menu: React.FC = () => {
 
       const target = e.target as HTMLElement
       if (dropdown && !dropdown.contains(target)) {
+        if (menuRef && menuRef.current && !showDropdown) {
+          menuRef.current.style.transform = "translateX(0)"
+        } else if (menuRef && menuRef.current) {
+          menuRef.current.style.transform = "translateX(-10rem)"
+        }
         setShowDropdown(prev => !prev)
       }
     }

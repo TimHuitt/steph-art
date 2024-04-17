@@ -22,7 +22,7 @@ export const WindowProvider = ({
   children: React.ReactNode
 }) => {
   const [ width, setWidth ] = useState<number>(0)
-  const [ selected, setSelected ] = useState<string>('')
+  const [ selected, setSelected ] = useState<string>('home')
   const mainRef = useRef<HTMLDivElement>(null)
   const aboutRef = useRef<HTMLDivElement>(null)
   const portfolioRef = useRef<HTMLDivElement>(null)
