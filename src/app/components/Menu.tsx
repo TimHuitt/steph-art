@@ -39,7 +39,7 @@ const Menu: React.FC = () => {
   const handleMenu = () => {
     if (menuRef && menuRef.current && !showDropdown) {
       menuRef.current.style.transform = "translateX(0)"
-    } else {
+    } else if (menuRef && menuRef.current) {
       menuRef.current.style.transform = "translateX(-10rem)"
     }
     setShowDropdown(prev => !prev)
