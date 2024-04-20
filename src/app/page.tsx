@@ -23,12 +23,14 @@ const comfortaa = Comfortaa({
 });
 
 export default function Home() {
-  const { setWidth, mainRef } = useWindowContext()
+  const { width, setWidth, mainRef } = useWindowContext()
   const [ loaded, setLoaded ] = useState<boolean>(false)
   
   useEffect(() => {
-
     setLoaded(true) 
+  },[])
+
+  useEffect(() => {
     const handleResize = () => {
       setWidth(window.innerWidth)
     }
@@ -50,8 +52,8 @@ export default function Home() {
 
   return (
         <main ref={mainRef} className={`${comfortaa.className} bg-purple-100 max-h-screen overflow-y-auto relative flex pb-40 w-full max-w-screen flex-col items-center`}>
-          <Announcements />      
-          {loaded ? <Menu /> : <div className="h-8"></div>}
+          <Announcements width={width} />      
+          {loaded ? <Menu /> : <div className="min-h-6 w-5/6 p-2 m-2 bg-purple-400 animate-pulse rounded-xl"></div>}
           <Header />
           <Intro />
           <Gallery />

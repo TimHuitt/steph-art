@@ -8,8 +8,7 @@ const config: Config = {
   ],
   theme: {
     extend: {
-      rotate: {
-      },
+      
     },
   },
   plugins: [],

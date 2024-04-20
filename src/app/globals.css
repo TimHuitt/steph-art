@@ -34,4 +34,17 @@
   .cancel {
     @apply bg-red-600 bg-opacity-30 active:bg-gray-500
   }
+  .ticker {
+    animation: scroll 15s linear infinite;
+  }
+
+  @keyframes scroll {
+    from{
+      left: 100%;
+    }
+    to {
+      left: -100%;
+    }
+  }
 }
+
