@@ -14,7 +14,7 @@ const Shop: React.FC = () => {
     <>
       <h1 ref={shopRef} className={`${sketch.className} font-thin mt-20 text-purple-950`}>Shop</h1>
       <div className={`flex flex-col items-center`}>
-        <p className="w-full text-xl p-6 pe-0 w-3/4">
+        <p className="w-full text-center md:text-xl p-6 w-3/4">
           Browse my collection of paintings, prints, sculpts, and more at &nbsp;
         </p>
         <div className="relative max-h-20 max-w-50 px-2 mb-10 hover:border-b-4 hover:border-orange-500 hover:bg-orange-500 hover:bg-opacity-20 rounded-xl overflow-hidden cursor-pointer">

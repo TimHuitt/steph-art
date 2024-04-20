@@ -13,9 +13,9 @@ const Custom: React.FC = () => {
   return (
     <>
       <h1 ref={customRef} className={`${sketch.className} font-thin mt-20 text-purple-950`}>Custom</h1>
-      <div className="flex flex-col items-center justify-center w-[90%] md:w-5/6 lg:w-4/6 pt-20 bg-orange-300 rounded-xl">
-        <p className="text-2xl p-6 w-3/4">If you would like to request custom work, or have any other question, please send me a message below! I&apos;ll be in contact as soon as possible!</p>
-        <div className="relative flex justify-center items-start h-[300px] gap-6 w-full my-6 px-6 overflow-hidden">
+      <div className="flex flex-col items-center justify-center w-[90%] md:w-5/6 lg:w-4/6 pt-4 md:pt-20 bg-orange-300 rounded-xl">
+        <p className="text-center md:text-2xl p-6 md:w-3/4">If you would like to request custom work, or have any other question, please send me a message below! I&apos;ll be in contact as soon as possible!</p>
+        <div className="relative flex justify-center items-start h-[150px] md:h-[300px] gap-6 w-full my-6 md:px-6 overflow-hidden">
           <div className="relative w-1/4 h-full rounded-xl overflow-hidden">
             <Image 
               src={"/images/featured/15.jpg"}
@@ -41,7 +41,7 @@ const Custom: React.FC = () => {
             />
           </div>
         </div>
-        <div className="w-full flex justify-center pt-20">
+        <div className="w-full flex justify-center md:pt-20">
           <form className="w-full flex flex-col items-center text-center">
             <label className="label" htmlFor="name">Name</label>
             <input 
