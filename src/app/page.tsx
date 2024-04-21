@@ -51,7 +51,7 @@ export default function Home() {
   },[setWidth, loaded])
 
   return (
-        <main ref={mainRef} className={`${comfortaa.className} bg-purple-100 max-h-screen overflow-y-auto relative flex pb-40 w-full max-w-screen flex-col items-center`}>
+        <main ref={mainRef} className={`${comfortaa.className} absolute top-0 left-0 bg-purple-100 max-h-screen overflow-y-auto relative flex pb-40 w-full max-w-screen flex-col items-center`}>
           <Announcements width={width} />      
           {loaded ? <Menu /> : <div className="min-h-6 w-5/6 p-2 m-2 bg-purple-400 animate-pulse rounded-xl"></div>}
           <Header />

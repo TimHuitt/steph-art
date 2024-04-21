@@ -11,9 +11,13 @@ const sketch = Cabin_Sketch({
 const Portfolio: React.FC = () => {
   const { portfolioRef } = useWindowContext()
 
+  const openWindow = () => {
+    console.log('opening')
+  }
+
   return (
     <>
-      <h1 ref={portfolioRef} className={`${sketch.className} font-thin mt-20 text-purple-950`}>Portfolio</h1>
+      <h1 ref={portfolioRef} className={`${sketch.className} font-thin text-purple-950`}>Portfolio</h1>
       <small className="-mt-5 mb-10 opacity-30">click to enlarge</small>
       <div className="flex flex-col items-center justify-center w-[90%] md:w-5/6 lg:w-4/6 bg-purple-300 rounded-xl">
         <div className="relative flex flex-col items-center justify-center items-start h-auto gap-6 w-full my-6 px-6 overflow-hidden">

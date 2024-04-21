@@ -1,6 +1,6 @@
 import Image from "next/image"
 
-const Divider: React.FC<{translate?: boolean}> = ({ translate }) => {
+const Divider: React.FC<{header?: boolean}> = ({ header }) => {
   return (
     <Image 
       src={'/images/divider.png'} 
@@ -8,7 +8,7 @@ const Divider: React.FC<{translate?: boolean}> = ({ translate }) => {
       width={4000} 
       height={200} 
       style={{objectFit: "cover", objectPosition: "center"}}
-      className={translate ? "-translate-y-4 md:-translate-y-12" : 'mt-24'}
+      className={header ? '' : 'mt-12 mb-16'}
     />
   )
 }

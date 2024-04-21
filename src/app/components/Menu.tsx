@@ -84,7 +84,7 @@ const Menu: React.FC = () => {
 
   return (
     <>      
-      <div className={`sticky top-4 w-full h-8 mb-2 flex justify-center items-start text-xl z-40`}>
+      <div className={`sticky top-4 w-full h-10 md:h-14 mb-2 flex justify-center items-start text-xl z-40`}>
         
         { width > 950 ? (
           <>
@@ -133,7 +133,7 @@ const Menu: React.FC = () => {
               />
             </div>
           </a>
-          <a href="#" className="relative flex justify-center items-center w-[40px] h-[40px] cursor-pointer">
+          <a href="https://www.facebook.com/aDoodlingOctopus/" target="_blank" className="relative flex justify-center items-center w-[40px] h-[40px] cursor-pointer">
             <div className="relative w-[30px] h-[30px] hover:w-[40px] h-[40px]">
               <Image 
                 src={"/images/icons/facebook.svg"}
