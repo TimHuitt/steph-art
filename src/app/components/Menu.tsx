@@ -89,8 +89,8 @@ const Menu: React.FC = () => {
         { width > 950 ? (
           <>
             <div className="flex-grow"></div>
-            <div className="flex-grow-0">
-              <ul className="flex justify-center translate-x-[70px] text-green-700 bg-purple-100 py-2 bg-opacity-85 rounded-3xl">
+            <div className="flex-grow-0 my-2">
+              <ul className="flex justify-center gap-5 translate-x-[70px] text-green-700 bg-purple-100 bg-opacity-85 rounded-xl">
                 <li onClick={() => scrollToLoc()} className={`list-item ${selected === 'home' ? 'selected' : ''}`}>Home</li>
                 <li onClick={() => scrollToLoc(aboutRef)} className={`${selected === 'about' ? 'selected' : ''} list-item`}>About</li>
                 <li onClick={() => scrollToLoc(portfolioRef)} className={`${selected === 'portfolio' ? 'selected' : ''} list-item`}>Portfolio</li>
@@ -122,8 +122,8 @@ const Menu: React.FC = () => {
           </div>
         )}
         <div className="flex-grow"></div>
-        <div className="flex-grow-0 flex h-[40px] gap-2 mr-6 text-green-700 bg-purple-100 bg-opacity-75 rounded-3xl">
-          <a href="#" className="relative flex justify-center items-center w-[40px] h-[40px] cursor-pointer">
+        <div className="flex-grow-0 flex h-[40px] gap-2 mr-6 md:my-2 text-green-700 bg-purple-100 bg-opacity-75 rounded-xl">
+          <a href="https://www.instagram.com/adoodlingoctopus/" target="_blank" className="relative flex justify-center items-center w-[40px] h-[40px] cursor-pointer">
             <div className="relative w-[30px] h-[30px] hover:w-[40px] h-[40px]">
               <Image 
                 src={"/images/icons/instagram.svg"}
@@ -143,7 +143,7 @@ const Menu: React.FC = () => {
               />
             </div>
           </a>
-          <a href="#" className="relative flex justify-center items-center w-[40px] h-[40px] cursor-pointer">
+          <div onClick={() => scrollToLoc(customRef)} className="relative flex justify-center items-center w-[40px] h-[40px] cursor-pointer">
             <div className="relative w-[30px] h-[30px] hover:w-[40px] h-[40px]">
               <Image 
                 src={"/images/icons/email.svg"}
@@ -152,7 +152,7 @@ const Menu: React.FC = () => {
                 style={{objectFit: "contain"}}
               />
             </div>
-          </a>
+          </div>
         </div>
       </div>
     </>

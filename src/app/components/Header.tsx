@@ -13,7 +13,7 @@ const Header: React.FC = () => {
 
   return (
     <div className="relative w-full h-auto">
-      <div className="absolute top-0 left-0 w-full pb-[250px] md:pb-[350px] lg:pb-[450px] relative flex flex-col justify-center items-center mt-2 md:mt-4 text-xl rounded-xl overflow-hidden z-0">
+      <div className="absolute top-0 left-0 w-full pb-[250px] md:pb-[350px] lg:pb-[450px] relative flex flex-col justify-center items-center mt-4 md:mt-6 text-xl rounded-xl overflow-hidden z-0">
         <Image 
           src={'/images/bg.png'} 
           alt={"header-background"}

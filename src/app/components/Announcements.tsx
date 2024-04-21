@@ -19,10 +19,10 @@ const Announcements: React.FC<{width: number}> = ({ width }) => {
         </p>
       </div>
       { showDetails && (
-        <div className='fixed top-0 left-0 h-screen w-screen max-h-screen max-w-screen flex justify-center items-center text-purple-200 bg-purple-950 bg-opacity-60 z-50'>
+        <div className='fixed top-0 left-0 h-screen w-screen max-h-screen max-w-screen flex justify-center items-start pt-10 text-purple-200 bg-purple-950 bg-opacity-60 z-50'>
           <div 
             id="details-window" 
-            className='relative w-[90%] max-w-xl h-auto max-h-[85vh] flex flex-col justify-center border-4 border-purple-950 bg-purple-700 rounded-xl z-[60]'
+            className='relative w-[90%] max-w-xl h-auto max-h-[80vh] flex flex-col justify-center border-4 border-purple-950 bg-purple-700 rounded-xl z-[60]'
           >
             <div className='w-full h-auto flex flex-col items-center p-4 pt-8 md:pt-12 overflow-auto'>
               <h2 className='text-2xl text-center'>OZO Coffee Roasters Annual Spring Latte Art ThrowDown</h2>
@@ -39,7 +39,8 @@ const Announcements: React.FC<{width: number}> = ({ width }) => {
                 />
               </div>
               <p className='w-full h-auto flex items-center text-center py-4'>
-              Come witness a latte art throw down, where local and regional baristas gather to stregthen the Specialty Coffee Industry , build community and give back to local non-profits. This event is a fundraiser for Mindful Works and Bridge House, two Boulder based non profits on a mission
+              Come witness a latte art throw down, where local and regional baristas gather to stregthen the Specialty Coffee Industry , build community and give back to local non-profits.<br /><br />
+              This event is a fundraiser for Mindful Works and Bridge House, two Boulder based non profits on a mission
               to end homelessness.<br /><br />
               Free to Attend
               </p>
